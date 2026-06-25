@@ -1,0 +1,14 @@
+# Python
+backend/venv/
+backend/__pycache__/
+*.pyc
+
+# Environment
+backend/.env
+
+# Dataset
+backend/outfit_items_dataset/
+
+# Uploads
+backend/UPLOAD_FOLDER/
+backend/scripts/UPLOAD_FOLDER/
