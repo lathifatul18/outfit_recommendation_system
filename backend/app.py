@@ -7,6 +7,8 @@ from routes.color_routes import color_bp
 from routes.auth_routes import auth_bp
 from routes.fashion_routes import fashion_bp
 from routes.recommendation_routes import recommendation_bp
+from routes.outfit_routes import outfit_bp
+from routes.image_routes import image_bp
 
 app = Flask(__name__)
 
@@ -43,6 +45,16 @@ app.register_blueprint(
 app.register_blueprint(
     recommendation_bp,
     url_prefix="/api/recommendation"
+)
+
+app.register_blueprint(
+    outfit_bp,
+    url_prefix="/api/outfit"
+)
+
+app.register_blueprint(
+    image_bp,
+    url_prefix="/api/image" 
 )
 
 if __name__ == "__main__":

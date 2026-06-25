@@ -27,6 +27,12 @@ def get_recommendation(
 
         return []
     
+    if not item.embedding_vector:
+        return {
+            "status": False,
+            "message": "Item tidak memiliki embedding vector"
+        }
+    
     source_vector = json.loads(
         item.embedding_vector
     )
@@ -38,6 +44,12 @@ def get_recommendation(
     for other in items:
 
         if other.id_item == item.id_item:
+            continue
+
+        if not other.embedding_vector:
+            continue
+
+        if other.id_category != item.id_category:
             continue
 
         other_vector = json.loads(
