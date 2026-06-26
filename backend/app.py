@@ -54,7 +54,7 @@ app.register_blueprint(
 
 app.register_blueprint(
     image_bp,
-    url_prefix="/api/image" 
+    url_prefix="/api/images" 
 )
 
 if __name__ == "__main__":

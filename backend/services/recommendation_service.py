@@ -1,9 +1,15 @@
 import json
 import numpy as np
+import os
 
 from sklearn.metrics.pairwise import cosine_similarity
 from models.fashion_item import FashionItem
 
+
+BASE_FOLDER = os.path.join(
+    os.getcwd(),
+    "outfit_items_dataset"
+)
 
 def calculate_similarity(
         source_vector,
@@ -52,6 +58,9 @@ def get_recommendation(
         if other.id_category != item.id_category:
             continue
 
+        if other.sub_category != item.sub_category:
+            continue
+        
         other_vector = json.loads(
             other.embedding_vector
         )
@@ -61,10 +70,17 @@ def get_recommendation(
             other_vector
         )
 
+        relative_path = os.path.relpath(
+            other.gambar,
+            "outfit_items_dataset"
+        )
+
+        relative_path = relative_path.replace("\\", "/")
+
         results.append({
             "id_item": other.id_item,
             "nama_item": other.nama_item,
-            "gambar": other.gambar,
+            "gambar": f"/api/images/{relative_path}",
             "score": float(score)
         })
     

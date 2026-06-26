@@ -1,12 +1,22 @@
 from flask import Blueprint
-from flask import send_file
+from flask import send_from_directory
+
+import os
 
 image_bp = Blueprint(
     "image",
     __name__
 )
 
-@image_bp.route("/<path:image_name>")
-def get_image(filepath):
+BASE_FOLDER = os.path.join(
+    os.getcwd(),
+    "outfit_items_dataset"
+)
 
-    return send_file(filepath)
+@image_bp.route("/<path:filename>")
+def get_image(filename):
+
+    return send_from_directory(
+        BASE_FOLDER,
+        filename
+    )
