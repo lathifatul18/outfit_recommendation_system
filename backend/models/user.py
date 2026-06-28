@@ -11,3 +11,11 @@ class User(db.Model):
     email = db.Column(db.String(30), unique=True)
     password = db.Column(db.String(255))
     created_at = db.Column(db.DateTime)
+    is_verified = db.Column(
+        db.Boolean,
+        default=False
+    )
+    verification_token = db.Column(
+        db.String(100),
+        nullable=True
+    )

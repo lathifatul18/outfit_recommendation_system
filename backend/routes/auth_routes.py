@@ -1,3 +1,4 @@
+import secrets
 from flask import Blueprint
 from flask import request
 from flask import jsonify
@@ -6,6 +7,9 @@ from extensions import db
 
 from werkzeug.security import (generate_password_hash, check_password_hash)
 from datetime import datetime
+from services.email_service import send_verification_email
+from email_validator import validate_email, EmailNotValidError
+
 
 auth_bp = Blueprint(
     "auth",
@@ -26,6 +30,14 @@ def register():
     email = data.get("email")
     password = data.get("password")
 
+    try:
+        validate_email(email)
+    except EmailNotValidError:
+        return jsonify({
+            "status": False,
+            "message": "Format email tidak valid"
+        }), 400
+
     if User.query.filter_by(username=username).first():
         return jsonify({
             "status": False,
@@ -38,24 +50,31 @@ def register():
             "message": "Email sudah digunakan"
         }), 400
     
+    token = secrets.token_urlsafe(32)
+    
     new_user = User(
         nama=nama,
         username=username,
         email=email,
         password=generate_password_hash(password),
-        created_at=datetime.now()
+        created_at=datetime.now(),
+        is_verified=False,
+        verification_token=token
     )
 
-    db.session.add(new_user)
-    db.session.commit()
-
-    if not username or not email or not password:
+    if not nama or not username or not email or not password:
         return jsonify({
             "status": False,
             "message": "Username, email dan Password harus diisi"
     }), 400
-    
 
+    db.session.add(new_user)
+    db.session.commit()
+    send_verification_email(
+        email, 
+        token
+    )
+    
     return jsonify({
         "status": True,
         "message": "Register berhasil"
@@ -63,10 +82,7 @@ def register():
 
 
 
-@auth_bp.route(
-    "/login",
-    methods=["POST"]
-)
+@auth_bp.route("/login", methods=["POST"])
 def login():
 
     data = request.json
@@ -81,6 +97,12 @@ def login():
             "status": False,
             "message": "Username tidak ditemukan"
         }), 404
+    
+    if not user.is_verified:
+        return jsonify({
+            "status": False,
+            "message": "Silakan verifikasi email terlebih dahulu"
+        }), 403
     
     if not check_password_hash(
         user.password,
@@ -106,4 +128,27 @@ def login():
             "username": user.username,
             "email": user.email
             }
+    })
+
+@auth_bp.route("/verify/<token>", methods=["GET"])
+def verify_email(token):
+
+    user = User.query.filter_by(
+        verification_token=token
+    ).first()
+
+    if user is None:
+        return jsonify({
+            "status": False,
+            "message": "Token tidak ditemukan"
+        }), 404
+    
+    user.is_verified = True
+    user.verification_token = None
+
+    db.session.commit()
+
+    return jsonify({
+        "status": True,
+        "message": "Email berhasil diverifikasi. silahkan login"
     })

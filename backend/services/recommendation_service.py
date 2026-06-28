@@ -43,7 +43,10 @@ def get_recommendation(
         item.embedding_vector
     )
 
-    items = FashionItem.query.all()
+    FashionItem.query.filter_by(
+        id_category=item.id_category,
+        sub_category=item.sub_category
+    ).all()
 
     results = []
 

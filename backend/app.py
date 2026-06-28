@@ -1,5 +1,5 @@
 from flask import Flask
-from extensions import db
+from extensions import db, mail
 from config import Config
 from routes.category_routes import category_bp
 from routes.color_routes import color_bp
@@ -15,6 +15,7 @@ app = Flask(__name__)
 
 app.config.from_object(Config)
 db.init_app(app)
+mail.init_app(app)
 
 @app.route("/api")
 def home():
