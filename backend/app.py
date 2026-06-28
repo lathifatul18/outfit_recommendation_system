@@ -9,6 +9,7 @@ from routes.fashion_routes import fashion_bp
 from routes.recommendation_routes import recommendation_bp
 from routes.outfit_routes import outfit_bp
 from routes.image_routes import image_bp
+from routes.favorite_routes import favorite_bp
 
 app = Flask(__name__)
 
@@ -55,6 +56,11 @@ app.register_blueprint(
 app.register_blueprint(
     image_bp,
     url_prefix="/api/images" 
+)
+
+app.register_blueprint(
+    favorite_bp,
+    url_prefix="/api/favorite"
 )
 
 if __name__ == "__main__":

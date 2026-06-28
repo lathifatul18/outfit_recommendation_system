@@ -15,7 +15,7 @@ def get_categories():
     
     for category in categories:
 
-        data.apppend({
+        data.append({
             "id_category": category.id_category,
             "nama_category": category.nama_category
         })
