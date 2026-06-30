@@ -1,0 +1,14 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Environment
+.env
+
+# Dataset
+outfit_items_dataset/
+
+# Uploads
+UPLOAD_FOLDER/
+scripts/UPLOAD_FOLDER/

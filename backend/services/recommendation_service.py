@@ -1,15 +1,9 @@
 import json
-import numpy as np
 import os
 
 from sklearn.metrics.pairwise import cosine_similarity
 from models.fashion_item import FashionItem
 
-
-BASE_FOLDER = os.path.join(
-    os.getcwd(),
-    "outfit_items_dataset"
-)
 
 def calculate_similarity(
         source_vector,
@@ -43,7 +37,7 @@ def get_recommendation(
         item.embedding_vector
     )
 
-    FashionItem.query.filter_by(
+    items =FashionItem.query.filter_by(
         id_category=item.id_category,
         sub_category=item.sub_category
     ).all()

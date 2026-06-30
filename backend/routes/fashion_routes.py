@@ -2,7 +2,9 @@ from flask import Blueprint
 from flask import request
 from models.fashion_item import FashionItem
 from extensions import db
+from services.embedding_service import extract_embedding
 import os
+import json
 
 fashion_bp = Blueprint(
     "fashion",
@@ -11,7 +13,8 @@ fashion_bp = Blueprint(
 
 UPLOAD_FOLDER = "uploads"
 
-os.makedirs("UPLOAD_FOLDER", exist_ok=True)
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
 
 @fashion_bp.route("/upload", methods=["POST"])
 def upload_fashion():
@@ -46,6 +49,7 @@ def upload_fashion():
     filepath = os.path.join(UPLOAD_FOLDER, image.filename)
 
     image.save(filepath)
+    vector = extract_embedding(filepath)
 
     new_item = FashionItem(
         nama_item=nama_item,
@@ -54,7 +58,8 @@ def upload_fashion():
         id_category=int(id_category),
         id_color=int(id_color),
         pattern=pattern,
-        id_user=None
+        id_user=None,
+        embedding_vector=json.dumps(vector.tolist())
     )
 
     db.session.add(new_item)
