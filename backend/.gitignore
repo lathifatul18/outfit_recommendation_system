@@ -1,7 +1,11 @@
 # Python
 venv/
+.venv/
+env/
 __pycache__/
 *.pyc
+*.py[cod]
+*.pyo
 
 # Environment
 .env
