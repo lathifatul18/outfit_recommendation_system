@@ -2339,3 +2339,131 @@ KeyError: 'id_item'
 2026-07-15 08:13:41 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 08:13:41] "GET /api/images/bottomwear/pants/bottomwear_pants1623.png HTTP/1.1" 200 -
 2026-07-15 08:13:41 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 08:13:41] "GET /api/images/footwear/sneakers/footwear_sneakers3747.png HTTP/1.1" 200 -
 2026-07-15 08:13:41 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 08:13:41] "GET /api/images/accessories/bag/accessories_bag115.png HTTP/1.1" 200 -
+2026-07-15 08:30:14 [INFO] routes.fashion_routes: [inspirations] Mengembalikan 6 item inspirasi
+2026-07-15 08:30:18 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 08:30:18] "GET /api/fashion/inspirations?limit=6 HTTP/1.1" 200 -
+2026-07-15 08:30:18 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 08:30:18] "GET /api/images/footwear/shoes/footwear_shoes1326.png HTTP/1.1" 200 -
+2026-07-15 08:30:18 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 08:30:18] "GET /api/images/accessories/hat/accessories_hat466.png HTTP/1.1" 200 -
+2026-07-15 08:30:18 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 08:30:18] "GET /api/images/accessories/bag/accessories_bag10565.png HTTP/1.1" 200 -
+2026-07-15 08:30:18 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 08:30:18] "GET /api/images/footwear/sneakers/footwear_sneakers1476.png HTTP/1.1" 200 -
+2026-07-15 08:30:18 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 08:30:18] "GET /api/images/footwear/heels/footwear_heels213.png HTTP/1.1" 200 -
+2026-07-15 08:30:18 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 08:30:18] "GET /api/images/bottomwear/pants/bottomwear_pants2943.png HTTP/1.1" 200 -
+2026-07-15 09:00:08 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 09:00:08] "GET /api/images/footwear/heels/footwear_heels213.png HTTP/1.1" 200 -
+2026-07-15 09:00:19 [INFO] routes.auth_routes: [login] Login berhasil: username=patulsky, id=15
+2026-07-15 09:00:19 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 09:00:19] "POST /api/auth/login HTTP/1.1" 200 -
+2026-07-15 09:00:20 [INFO] services.favorite_service: [favorite] User id=15 memiliki 0 favorit
+2026-07-15 09:00:20 [INFO] services.favorite_service: [favorite] User id=15 memiliki 0 favorit
+2026-07-15 09:00:20 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 09:00:20] "GET /api/favorite/15 HTTP/1.1" 200 -
+2026-07-15 09:00:20 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 09:00:20] "GET /api/favorite/15 HTTP/1.1" 200 -
+2026-07-15 09:01:27 [INFO] routes.fashion_routes: [inspirations] Mengembalikan 6 item inspirasi
+2026-07-15 09:01:30 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 09:01:30] "GET /api/fashion/inspirations?limit=6 HTTP/1.1" 200 -
+2026-07-15 10:24:25 [INFO] routes.fashion_routes: [upload] Menerima request upload gambar
+2026-07-15 10:24:25 [INFO] routes.fashion_routes: [upload] Gambar disimpan: D:\CAPSTONE\outfit_recommendation_system\backend\uploads\scaled_bottomwear_pants133_1784085865869.png
+2026-07-15 10:24:25 [INFO] routes.fashion_routes: [upload] Mengekstrak embedding ResNet50...
+2026-07-15 10:24:25 [INFO] services.embedding_service: [embedding] Loading image: D:\CAPSTONE\outfit_recommendation_system\backend\uploads\scaled_bottomwear_pants133_1784085865869.png
+2026-07-15 10:24:25 [INFO] services.embedding_service: [embedding] Acquiring lock for prediction...
+2026-07-15 10:24:25 [INFO] services.embedding_service: [embedding] Lock acquired. Loading model...
+2026-07-15 10:24:25 [INFO] services.embedding_service: [embedding] Running model forward pass (direct tensor call)...
+2026-07-15 10:24:27 [INFO] services.embedding_service: [embedding] Prediction completed. Releasing lock.
+2026-07-15 10:24:27 [INFO] routes.fashion_routes: [upload] Embedding berhasil diekstrak, shape=(2048,)
+2026-07-15 10:24:27 [INFO] routes.fashion_routes: [upload] Metadata tidak lengkap, menjalankan auto-classification...
+2026-07-15 10:24:27 [INFO] routes.fashion_routes: [upload] Auto-classified: category=2, sub=pants, color=1, pattern=Solid, score=0.8603
+2026-07-15 10:24:27 [INFO] routes.fashion_routes: [upload] Menyimpan item: nama=Celana Saya, sub=pants, cat=2
+2026-07-15 10:24:27 [INFO] routes.fashion_routes: [upload] Item berhasil disimpan dengan id_item=48420
+2026-07-15 10:24:27 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:24:27] "[35m[1mPOST /api/fashion/upload HTTP/1.1[0m" 201 -
+2026-07-15 10:24:28 [INFO] routes.outfit_routes: [OUTFIT] Generate outfit for item_id=48420
+2026-07-15 10:24:28 [INFO] services.outfit_service: [generate_outfit] Memulai untuk item_id=48420
+2026-07-15 10:24:28 [INFO] services.outfit_service: [generate_outfit] Item ditemukan: id=48420, nama=Celana Saya, sub_category=pants
+2026-07-15 10:24:28 [INFO] services.recommendation_service: [recommendation] Mencari item mirip untuk id=48420, sub_category=pants
+2026-07-15 10:24:28 [INFO] services.recommendation_service: [recommendation] Membandingkan dengan 3991 dataset items
+2026-07-15 10:24:35 [INFO] services.recommendation_service: [recommendation] Top result: id=6913, score=0.9989
+2026-07-15 10:24:35 [INFO] services.outfit_service: [generate_outfit] Matched item: id=6913, nama=bottomwear_pants133, score=0.9989
+2026-07-15 10:24:35 [INFO] services.outfit_service: [generate_outfit] uploaded_item gambar: /api/images/uploads/scaled_bottomwear_pants133_1784085865869.png
+2026-07-15 10:24:35 [INFO] services.outfit_service: [generate_outfit] matched_item gambar: /api/images/bottomwear/pants/bottomwear_pants133.png
+2026-07-15 10:24:36 [INFO] services.outfit_service: [generate_outfit] upperwear: upperwear_shirt2783 (0.7711)
+2026-07-15 10:24:36 [INFO] services.outfit_service: [generate_outfit] footwear: footwear_sneakers1733 (0.5700)
+2026-07-15 10:24:36 [INFO] services.outfit_service: [generate_outfit] accessories: accessories_bag13888 (0.6858)
+2026-07-15 10:24:36 [INFO] services.outfit_service: [generate_outfit] Selesai. Keys outfit: ['uploaded_item', 'matched_item', 'upperwear', 'footwear', 'accessories']
+2026-07-15 10:24:36 [INFO] routes.outfit_routes: [OUTFIT] Outfit berhasil dibuat untuk item_id=48420
+2026-07-15 10:24:36 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:24:36] "GET /api/outfit/generate/48420 HTTP/1.1" 200 -
+2026-07-15 10:24:37 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:24:37] "GET /api/images/uploads/scaled_bottomwear_pants133_1784085865869.png HTTP/1.1" 200 -
+2026-07-15 10:24:37 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:24:37] "GET /api/images/bottomwear/pants/bottomwear_pants133.png HTTP/1.1" 200 -
+2026-07-15 10:24:37 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:24:37] "GET /api/images/upperwear/shirt/upperwear_shirt2783.png HTTP/1.1" 200 -
+2026-07-15 10:24:37 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:24:37] "GET /api/images/footwear/sneakers/footwear_sneakers1733.png HTTP/1.1" 200 -
+2026-07-15 10:24:37 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:24:37] "GET /api/images/accessories/bag/accessories_bag13888.png HTTP/1.1" 200 -
+2026-07-15 10:25:02 [INFO] routes.fashion_routes: [inspirations] Mengembalikan 6 item inspirasi
+2026-07-15 10:25:05 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:25:05] "GET /api/fashion/inspirations?limit=6 HTTP/1.1" 200 -
+2026-07-15 10:25:05 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:25:05] "GET /api/images/upperwear/jacket/upperwear_jacket2533.png HTTP/1.1" 200 -
+2026-07-15 10:25:05 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:25:05] "GET /api/images/bottomwear/pants/bottomwear_pants4449.png HTTP/1.1" 200 -
+2026-07-15 10:25:05 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:25:05] "GET /api/images/one-piece/dress/one-piece_dress12901.png HTTP/1.1" 200 -
+2026-07-15 10:25:06 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:25:06] "GET /api/images/bottomwear/skirt/bottomwear_skirt905.png HTTP/1.1" 200 -
+2026-07-15 10:25:06 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:25:06] "GET /api/images/footwear/sneakers/footwear_sneakers2171.png HTTP/1.1" 200 -
+2026-07-15 10:25:06 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:25:06] "GET /api/images/upperwear/shirt/upperwear_shirt2566.png HTTP/1.1" 200 -
+2026-07-15 10:26:11 [INFO] routes.auth_routes: [register] User baru: username=lalalalisa, email=lalisablinkeu03@gmail.com
+2026-07-15 10:26:17 [INFO] services.email_service: [email] ✅ Email verifikasi berhasil dikirim ke lalisablinkeu03@gmail.com
+2026-07-15 10:26:17 [INFO] routes.auth_routes: [register] Email verifikasi dikirim ke lalisablinkeu03@gmail.com
+2026-07-15 10:26:17 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:26:17] "POST /api/auth/register HTTP/1.1" 200 -
+2026-07-15 10:26:28 [INFO] routes.auth_routes: [verify] Email berhasil diverifikasi: username=lalalalisa
+2026-07-15 10:26:28 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:26:28] "GET /api/auth/verify/4kPPu4rMd5i9Gqk_94pWCgW7qlL0SxhhxdM906PNYFg HTTP/1.1" 200 -
+2026-07-15 10:26:28 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:26:28] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-07-15 10:26:54 [INFO] routes.auth_routes: [login] Login berhasil: username=lalalalisa, id=19
+2026-07-15 10:26:54 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:26:54] "POST /api/auth/login HTTP/1.1" 200 -
+2026-07-15 10:26:54 [INFO] services.favorite_service: [favorite] User id=19 memiliki 0 favorit
+2026-07-15 10:26:54 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:26:54] "GET /api/favorite/19 HTTP/1.1" 200 -
+2026-07-15 10:26:54 [INFO] services.favorite_service: [favorite] User id=19 memiliki 0 favorit
+2026-07-15 10:26:54 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:26:54] "GET /api/favorite/19 HTTP/1.1" 200 -
+2026-07-15 10:27:15 [INFO] routes.fashion_routes: [upload] Menerima request upload gambar
+2026-07-15 10:27:15 [INFO] routes.fashion_routes: [upload] Gambar disimpan: D:\CAPSTONE\outfit_recommendation_system\backend\uploads\scaled_accessories_bag13_1784086035828.png
+2026-07-15 10:27:15 [INFO] routes.fashion_routes: [upload] Mengekstrak embedding ResNet50...
+2026-07-15 10:27:15 [INFO] services.embedding_service: [embedding] Loading image: D:\CAPSTONE\outfit_recommendation_system\backend\uploads\scaled_accessories_bag13_1784086035828.png
+2026-07-15 10:27:16 [INFO] services.embedding_service: [embedding] Acquiring lock for prediction...
+2026-07-15 10:27:16 [INFO] services.embedding_service: [embedding] Lock acquired. Loading model...
+2026-07-15 10:27:16 [INFO] services.embedding_service: [embedding] Running model forward pass (direct tensor call)...
+2026-07-15 10:27:19 [INFO] services.embedding_service: [embedding] Prediction completed. Releasing lock.
+2026-07-15 10:27:19 [INFO] routes.fashion_routes: [upload] Embedding berhasil diekstrak, shape=(2048,)
+2026-07-15 10:27:19 [INFO] routes.fashion_routes: [upload] Metadata tidak lengkap, menjalankan auto-classification...
+2026-07-15 10:27:19 [INFO] routes.fashion_routes: [upload] Auto-classified: category=3, sub=sneakers, color=1, pattern=Solid, score=0.7303
+2026-07-15 10:27:19 [INFO] routes.fashion_routes: [upload] Menyimpan item: nama=Sepatu Sneakers Saya, sub=sneakers, cat=3
+2026-07-15 10:27:19 [INFO] routes.fashion_routes: [upload] Item berhasil disimpan dengan id_item=48421
+2026-07-15 10:27:19 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:27:19] "[35m[1mPOST /api/fashion/upload HTTP/1.1[0m" 201 -
+2026-07-15 10:27:20 [INFO] routes.outfit_routes: [OUTFIT] Generate outfit for item_id=48421
+2026-07-15 10:27:20 [INFO] services.outfit_service: [generate_outfit] Memulai untuk item_id=48421
+2026-07-15 10:27:20 [INFO] services.outfit_service: [generate_outfit] Item ditemukan: id=48421, nama=Sepatu Sneakers Saya, sub_category=sneakers
+2026-07-15 10:27:20 [INFO] services.recommendation_service: [recommendation] Mencari item mirip untuk id=48421, sub_category=sneakers
+2026-07-15 10:27:20 [INFO] services.recommendation_service: [recommendation] Membandingkan dengan 4000 dataset items
+2026-07-15 10:27:34 [INFO] services.recommendation_service: [recommendation] Top result: id=28467, score=0.7303
+2026-07-15 10:27:34 [INFO] services.outfit_service: [generate_outfit] Matched item: id=28467, nama=footwear_sneakers100, score=0.7303
+2026-07-15 10:27:34 [INFO] services.outfit_service: [generate_outfit] uploaded_item gambar: /api/images/uploads/scaled_accessories_bag13_1784086035828.png
+2026-07-15 10:27:34 [INFO] services.outfit_service: [generate_outfit] matched_item gambar: /api/images/footwear/sneakers/footwear_sneakers100.png
+2026-07-15 10:27:35 [INFO] services.outfit_service: [generate_outfit] upperwear: upperwear_jacket2294 (0.6520)
+2026-07-15 10:27:36 [INFO] services.outfit_service: [generate_outfit] bottomwear: bottomwear_shorts2976 (0.5869)
+2026-07-15 10:27:36 [INFO] services.outfit_service: [generate_outfit] accessories: accessories_bag13 (0.9995)
+2026-07-15 10:27:36 [INFO] services.outfit_service: [generate_outfit] Selesai. Keys outfit: ['uploaded_item', 'matched_item', 'upperwear', 'bottomwear', 'accessories']
+2026-07-15 10:27:36 [INFO] routes.outfit_routes: [OUTFIT] Outfit berhasil dibuat untuk item_id=48421
+2026-07-15 10:27:36 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:27:36] "GET /api/outfit/generate/48421 HTTP/1.1" 200 -
+2026-07-15 10:27:37 [INFO] services.favorite_service: [favorite] User id=19 memiliki 0 favorit
+2026-07-15 10:27:37 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:27:37] "GET /api/favorite/19 HTTP/1.1" 200 -
+2026-07-15 10:27:37 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:27:37] "GET /api/images/uploads/scaled_accessories_bag13_1784086035828.png HTTP/1.1" 200 -
+2026-07-15 10:27:37 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:27:37] "GET /api/images/footwear/sneakers/footwear_sneakers100.png HTTP/1.1" 200 -
+2026-07-15 10:27:37 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:27:37] "GET /api/images/upperwear/jacket/upperwear_jacket2294.png HTTP/1.1" 200 -
+2026-07-15 10:27:37 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:27:37] "GET /api/images/bottomwear/shorts/bottomwear_shorts2976.png HTTP/1.1" 200 -
+2026-07-15 10:27:37 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:27:37] "GET /api/images/accessories/bag/accessories_bag13.png HTTP/1.1" 200 -
+2026-07-15 10:27:44 [INFO] services.favorite_service: [favorite] User id=19 memiliki 0 favorit
+2026-07-15 10:27:44 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:27:44] "GET /api/favorite/19 HTTP/1.1" 200 -
+2026-07-15 10:27:53 [INFO] services.favorite_service: [favorite] Item id=37888 berhasil ditambahkan ke favorit user id=19
+2026-07-15 10:27:53 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:27:53] "POST /api/favorite HTTP/1.1" 200 -
+2026-07-15 10:27:57 [INFO] services.favorite_service: [favorite] User id=19 memiliki 1 favorit
+2026-07-15 10:27:57 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:27:57] "GET /api/favorite/19 HTTP/1.1" 200 -
+2026-07-15 10:27:59 [INFO] services.favorite_service: [favorite] User id=19 memiliki 1 favorit
+2026-07-15 10:27:59 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:27:59] "GET /api/favorite/19 HTTP/1.1" 200 -
+2026-07-15 10:27:59 [INFO] services.favorite_service: [favorite] User id=19 memiliki 1 favorit
+2026-07-15 10:27:59 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:27:59] "GET /api/favorite/19 HTTP/1.1" 200 -
+2026-07-15 10:28:06 [INFO] routes.fashion_routes: [inspirations] Mengembalikan 6 item inspirasi
+2026-07-15 10:28:13 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:28:13] "GET /api/fashion/inspirations?limit=6 HTTP/1.1" 200 -
+2026-07-15 10:28:59 [INFO] routes.fashion_routes: [inspirations] Mengembalikan 6 item inspirasi
+2026-07-15 10:29:01 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:29:01] "GET /api/fashion/inspirations?limit=6 HTTP/1.1" 200 -
+2026-07-15 10:29:01 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:29:01] "GET /api/images/footwear/heels/footwear_heels4116.png HTTP/1.1" 200 -
+2026-07-15 10:29:01 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:29:01] "GET /api/images/footwear/shoes/footwear_shoes1440.png HTTP/1.1" 200 -
+2026-07-15 10:29:01 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:29:01] "GET /api/images/bottomwear/pants/bottomwear_pants1502.png HTTP/1.1" 200 -
+2026-07-15 10:29:02 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:29:02] "GET /api/images/accessories/hat/accessories_hat2304.png HTTP/1.1" 200 -
+2026-07-15 10:29:02 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:29:02] "GET /api/images/upperwear/tshirt/upperwear_tshirt3146.png HTTP/1.1" 200 -
+2026-07-15 10:29:02 [INFO] werkzeug: 127.0.0.1 - - [15/Jul/2026 10:29:02] "GET /api/images/footwear/sneakers/footwear_sneakers222.png HTTP/1.1" 200 -

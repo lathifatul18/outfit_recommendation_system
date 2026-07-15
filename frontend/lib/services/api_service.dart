@@ -4,8 +4,6 @@ import 'package:dio/dio.dart';
 
 import '../core/constants/api_constants.dart';
 
-/// Central API service with Dio configuration.
-/// All endpoints include robust error handling with specific messages.
 class ApiService {
   static final ApiService _instance = ApiService._internal();
   factory ApiService() => _instance;
@@ -16,8 +14,6 @@ class ApiService {
     dio = Dio(
       BaseOptions(
         baseUrl: ApiConstants.apiUrl,
-        // Timeout panjang untuk cold start pertama (model loading + cache warmup)
-        // Request berikutnya biasanya selesai dalam <30 detik
         connectTimeout: const Duration(seconds: 30),
         receiveTimeout: const Duration(seconds: 300),
         sendTimeout: const Duration(seconds: 300),
@@ -27,7 +23,6 @@ class ApiService {
       ),
     );
 
-    // Logging interceptor (debug only)
     if (kDebugMode) {
       dio.interceptors.add(
         LogInterceptor(
@@ -39,7 +34,7 @@ class ApiService {
     }
   }
 
-  // ==================== AUTH ====================
+  // AUTH
 
   Future<Map<String, dynamic>> login(
     String username,
@@ -85,7 +80,7 @@ class ApiService {
     }
   }
 
-  // ==================== FASHION ====================
+  // FASHION
 
   /// Upload gambar dan dapatkan id_item dari backend.
   /// Backend otomatis mengekstrak embedding (ResNet50) dan
@@ -213,7 +208,7 @@ class ApiService {
     }
   }
 
-  // ==================== OUTFIT ====================
+  // OUTFIT
 
   Future<Map<String, dynamic>> generateOutfit(int itemId) async {
     debugPrint('[API] generateOutfit untuk item_id=$itemId');
@@ -283,7 +278,7 @@ class ApiService {
     }
   }
 
-  // ==================== FAVORITE ====================
+  //  FAVORITE
 
   Future<bool> addFavorite(int userId, int itemId) async {
     try {
@@ -297,7 +292,7 @@ class ApiService {
       return true;
     } on DioException catch (e) {
       if (e.response?.statusCode == 400) {
-        return false; // Already favorited
+        return false;
       }
       rethrow;
     }
@@ -328,7 +323,7 @@ class ApiService {
     }
   }
 
-  // ==================== AUTH EXTRAS ====================
+  // AUTH EXTRAS
 
   /// Kirim ulang email verifikasi ke email yang terdaftar.
   /// Returns true jika berhasil, false jika email tidak terdaftar atau sudah terverifikasi.
@@ -346,14 +341,14 @@ class ApiService {
     }
   }
 
-  // ==================== CATEGORIES ====================
+  // CATEGORIES
 
   Future<List<Map<String, dynamic>>> getCategories() async {
     final response = await dio.get("${ApiConstants.categories}/");
     return List<Map<String, dynamic>>.from(response.data["data"]);
   }
 
-  // ==================== COLORS ====================
+  // COLORS
 
   Future<List<Map<String, dynamic>>> getColors() async {
     final response = await dio.get("${ApiConstants.colors}/");

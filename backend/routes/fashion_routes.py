@@ -22,7 +22,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 ALLOWED_EXTENSIONS = {"jpg", "jpeg", "png", "webp", "gif", "bmp"}
 
-# Memory cache for fast dataset classification
+# memori cache untuk dataset embeddings agar lebih cepat
 _DATASET_CACHE = None
 
 
