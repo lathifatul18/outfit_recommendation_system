@@ -17,15 +17,24 @@ def add():
     
     data = request.json
 
+    user_id = data.get("user_id")
+    item_id = data.get("item_id")
+
+    if not user_id or not item_id:
+        return {
+            "status": False,
+            "message": "user_id dan item_id harus diisi"
+        }, 400
+
     status = add_favorite(
-        data["user_id"], 
-        data["item_id"]
+        user_id, 
+        item_id
     )
 
     if not status:
         return {
             "status": False,
-            "message": "item sudah ada di favorit"
+            "message": "Item sudah ada di favorit"
         }, 400
     
     return {
@@ -48,9 +57,18 @@ def delete():
 
     data = request.json
 
+    user_id = data.get("user_id")
+    item_id = data.get("item_id")
+
+    if not user_id or not item_id:
+        return {
+            "status": False,
+            "message": "user_id dan item_id harus diisi"
+        }, 400
+
     status = delete_favorite(
-        data["user_id"],
-        data["item_id"]
+        user_id,
+        item_id
     )
 
     if not status:
@@ -63,5 +81,3 @@ def delete():
         "status": True,
         "message": "Berhasil dihapus dari favorit"
     }
-
-

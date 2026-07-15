@@ -22,5 +22,5 @@ def get_colors():
          
     return {
         "status": True,
-        "data": colors
+        "data": data
     }
